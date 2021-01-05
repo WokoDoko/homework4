@@ -144,7 +144,7 @@ public class Main {
                 if (val==symbol)
                     return true;
 
-
+                //НЕ УВИДЕЛ, ЧТО ДАТА СДАЧИ СТОИТ 5 ЯНВАРЯ, ХОТЯ ЗАНЯТИЙ И НЕТ.
             }
 
         }
