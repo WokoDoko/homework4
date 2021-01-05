@@ -117,7 +117,7 @@ public class Main {
     }
 
 
-    private static boolean isWin(char symbol) {
+/*    private static boolean isWin(char symbol) {
         if (map[0][0] == symbol && map[0][1] == symbol && map[0][2] == symbol)
             return true;
         if (map[1][0] == symbol && map[1][1] == symbol && map[1][2] == symbol)
@@ -136,9 +136,26 @@ public class Main {
             return true;
 
         return false;
-    }
+    }*/
 
     private static boolean isWinSecond(char symbol) {
+
+        for (int i = 0; i < SIZE; i++) {
+            if (map[0][i] == symbol && map[1][i] == symbol && map[2][i] == symbol)
+                return true;
+            if (map[i][0] == symbol && map[i][1] == symbol && map[i][2] == symbol)
+                return true;
+
+        }
+        if (map[0][0] == symbol && map[1][1] == symbol && map[2][2] == symbol)
+                return true;
+        if (map[0][2] == symbol && map[1][1] == symbol && map[2][0] == symbol)
+                return true;
+
+        return false;
+    }
+
+/*    private static boolean isWinSecond(char symbol) {
 
         for (int i = 0; i < SIZE; i++) {
             if (map[0][i] == symbol && map[1][i] == symbol && map[2][i] == symbol)
@@ -151,5 +168,5 @@ public class Main {
                 return true;
         }
         return false;
-    }
+    }*/
 }
