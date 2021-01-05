@@ -139,14 +139,16 @@ public class Main {
     }
 
     private static boolean isWinSecond(char symbol) {
+
         for (int i = 0; i < SIZE; i++) {
-            for (char val : map[i]) {
-                if (val==symbol)
-                    return true;
-
-                //НЕ УВИДЕЛ, ЧТО ДАТА СДАЧИ СТОИТ 5 ЯНВАРЯ, ХОТЯ ЗАНЯТИЙ И НЕТ.
-            }
-
+            if (map[0][i] == symbol && map[1][i] == symbol && map[2][i] == symbol)
+                return true;
+            if (map[i][0] == symbol && map[i][1] == symbol && map[i][2] == symbol)
+                return true;
+            if (map[0][0] == symbol && map[1][1] == symbol && map[2][2] == symbol)
+                return true;
+            if (map[0][2] == symbol && map[1][1] == symbol && map[2][0] == symbol)
+                return true;
         }
         return false;
     }
