@@ -11,6 +11,7 @@ public class Main {
     private static final char DOT_X = 'X';
     private static final char DOT_O = 'O';
     private static final int SIZE = 3;
+    private static final int SYMBOLS_TO_WIN = 3;
     private static char[][] map;
     private static Scanner scanner = new Scanner(System.in);
     private static ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -117,8 +118,8 @@ public class Main {
     }
 
 
-    private static boolean isWin(char symbol) {
-        if (map[0][0] == symbol && map[0][1] == symbol && map[0][2] == symbol)
+/*    private static boolean isWin(char symbol) {
+        if (map[0][0] == symbol && map[0][1] == symbol && map[0][2] == symbol) //ЭТО ПЕРВЫЙ СПОСОБ, РАЗОБРАННЫЙ НА ЗАНЯТИИ.
             return true;
         if (map[1][0] == symbol && map[1][1] == symbol && map[1][2] == symbol)
             return true;
@@ -136,18 +137,45 @@ public class Main {
             return true;
 
         return false;
-    }
+    }*/
 
     private static boolean isWinSecond(char symbol) {
+
         for (int i = 0; i < SIZE; i++) {
-            for (char val : map[i]) {
-                if (val==symbol)
-                    return true;
-
-
-            }
+            if (map[0][i] == symbol && map[1][i] == symbol && map[2][i] == symbol) //ЭТО ВТОРОЙ СПОСОБ ДЛЯ ВТОРОГО ПУНКТА В ЗАДАНИИ.
+                return true;
+            if (map[i][0] == symbol && map[i][1] == symbol && map[i][2] == symbol)
+                return true;
 
         }
+        if (map[0][0] == symbol && map[1][1] == symbol && map[2][2] == symbol)
+                return true;
+        if (map[0][2] == symbol && map[1][1] == symbol && map[2][0] == symbol)
+                return true;
+
         return false;
     }
+
+/*    private static boolean isWinSecond(char symbol) { // УНИВЕРСАЛЬНАЯ ПРОВЕРКА ПОБЕДЫ ДЛЯ ТРЕТЬЕГО ПУНКТА В ЗАДАНИИ.
+        int leftDiagonal = 0;
+        int rightDiagonal = 0;
+        int vertical = 0;
+        int horizontal = 0;
+        for (int i = 0; i < SIZE; i++) {
+            if (map[i][i]==symbol)
+                leftDiagonal++;
+                if (leftDiagonal==SYMBOLS_TO_WIN)
+                    return true;
+            if (map [i][SIZE-i-1]==symbol)
+                rightDiagonal++;
+                if (rightDiagonal==SYMBOLS_TO_WIN)
+                    return true;
+        for (int j = 0; j < SIZE; j++)
+            if (map[0][j]==symbol)
+                vertical++;
+                if (vertical==SYMBOLS_TO_WIN)
+                    return true;
+        }
+        return false;
+    }*/
 }
